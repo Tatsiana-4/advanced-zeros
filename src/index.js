@@ -1,26 +1,22 @@
 
 module.exports = function getZerosCount(number, base) {
-	
+
 	let factorisedBase = getDuplicateValues(factorize(base));
-	console.log(factorisedBase);
-	let minCountOfZero=0;
-	let arrZero =[];
-	for (let i = 0; i<factorisedBase.length ; i++) {
+	let minCountOfZero = 0;
+	let arrZero = [];
+	for (let i = 0; i < factorisedBase.length; i++) {
 		let p = factorisedBase[i];
 		let pi = p.number;
 		let qi = p.counter;
-		let zero= Math.floor(getNumberOfEntries(number,pi)/qi);
+		let zero = Math.floor(getNumberOfEntries(number, pi) / qi);
 		arrZero.push(zero);
-		console.log(p.number + "; "+ p.counter);
-		console.log('zero '+zero);
-	
-	}
-	
-		
-		arrZero.sort(function (a,b) {return a-b});
-		minCountOfZero =arrZero[0];
-	return minCountOfZero;
+		}
 
+	arrZero.sort(function (a, b) {
+		return a - b
+	});
+	minCountOfZero = arrZero[0];
+	return minCountOfZero;
 
 	function factorize(num) {
 		let factorsNumber = [];
@@ -44,7 +40,9 @@ module.exports = function getZerosCount(number, base) {
 		let arrPowers = [];
 		let powers = {};
 		let pair = {};
-		arr.sort(function (a,b) {return a-b});
+		arr.sort(function (a, b) {
+			return a - b
+		});
 		let c = arr[0];
 		let counter = 0;
 		for (let j = 0; j < arr.length; j++) {
@@ -54,8 +52,7 @@ module.exports = function getZerosCount(number, base) {
 				pair = {
 					"number": c,
 					"counter": counter
-				};
-				// console.log(pair.number);
+				};				
 				arrPowers.push(pair);
 				c = arr[j];
 				counter = 1;
@@ -65,9 +62,7 @@ module.exports = function getZerosCount(number, base) {
 			"number": c,
 			"counter": counter
 		};
-		arrPowers.push(pair);
-		// console.log(pair.number);
-		// console.log(arrPowers);
+		arrPowers.push(pair);		
 		return arrPowers;
 	}
 
@@ -81,10 +76,9 @@ module.exports = function getZerosCount(number, base) {
 			power++;
 			factorInPower = Math.pow(multPow, power);
 		}
-
-		// console.log(numberOfEntries);
+		
 		return numberOfEntries;
 
 	}
-	
+
 }
